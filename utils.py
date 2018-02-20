@@ -1,5 +1,9 @@
-from settings import *
+import settings
 import hashlib
+
+
+
+
 
 
 def isEmpty(key):
@@ -42,7 +46,7 @@ def getValue(key):
 	if key in settings.data:
 		value = settings.data[key]
 	else:
-		value = None
+		value = ""
 	settings.datalock.release()
 	return value
 
@@ -58,4 +62,44 @@ def addKey(key,value):
 	settings.data[key]=value
 	settings.datalock.release()
 	return
+
+
+class node:
+	def __init__(self,ip,port):
+		if ip is None or port is None:
+			raise ValueError(ip+" or "+str(port)+" is None")
+			exit()
+		self.ip = ip
+		self.port = port
+		self.setkey()
+
+
+	def setkey(self):
+		self.key = getHash(self.ip+str(self.port))
+
+	def getIp(self):
+		return self.ip
+
+	def getPort(self):
+		return self.port
+
+	def getKey(self):
+		return self.key
+
+	def getAddr(self):
+		return 'http://'+self.ip+":"+str(self.port)
+
+	def setIp(self,ip):
+		if ip is None:
+			return
+		self.ip = ip
+		self.setkey()
+		return
+
+	def setPort(self,port):
+		if port is None:
+			return
+		self.port = port
+		self.setkey()
+		return
 
