@@ -74,6 +74,10 @@ class node:
 		self.setkey()
 
 
+	def __str__(self):
+		ans = "ip:"+self.ip+",port:"+str(self.port)+",key:"+self.key
+		return ans
+
 	def setkey(self):
 		self.key = getHash(self.ip+str(self.port))
 
@@ -103,3 +107,9 @@ class node:
 		self.setkey()
 		return
 
+
+
+
+def makeAddr(ip,port):
+        addr = "http://"+ip+":"+str(port)
+        return addr

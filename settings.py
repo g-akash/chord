@@ -10,6 +10,7 @@ numSuccessors = 3
 datalock = threading.Lock()
 data = {}
 successorlock = threading.Lock()
+successorlistlock = threading.Lock()
 # declare successor and successorlist here
 successor = None
 successorList = []
