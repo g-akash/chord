@@ -16,5 +16,6 @@ successor = None
 successorList = []
 predecessorlock = threading.Lock() 
 predecessor = None
+defaulttimeout = 1
 
 
